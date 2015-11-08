@@ -7,10 +7,12 @@ rvm:
 
 env:
   - GEM=sunspot
-  - GEM=sunspot_rails RAILS=3.0.0 DB=postgres
-  - GEM=sunspot_rails RAILS=3.1.0 DB=postgres
-  - GEM=sunspot_rails RAILS=3.2.0 DB=postgres
-  - GEM=sunspot_rails RAILS=4.0.0 DB=postgres
+  - GEM=sunspot_rails RAILS=3.0.0
+  - GEM=sunspot_rails RAILS=3.1.0
+  - GEM=sunspot_rails RAILS=3.2.0
+  - GEM=sunspot_rails RAILS=4.0.0
+  - GEM=sunspot_rails RAILS=4.1.0
+  - GEM=sunspot_rails RAILS=4.2.0
 
 # Limit the size of the matrix by only performing one build against
 # 1.8.7 and 1.9.2
@@ -26,6 +28,14 @@ matrix:
       env: GEM=sunspot_rails RAILS=4.0.0 DB=postgres
   allow_failures:
     # SQLITE fails to load correctly on Travis in Ruby 2.0
+    - rvm: 2.0.0
+      env: GEM=sunspot_rails RAILS=3.2.0
+    - rvm: 2.0.0
+      env: GEM=sunspot_rails RAILS=4.0.0
+    - rvm: 2.0.0
+      env: GEM=sunspot_rails RAILS=4.1.0
+    - rvm: 2.0.0
+      env: GEM=sunspot_rails RAILS=4.2.0
 
 script:
   - ci/travis.sh
